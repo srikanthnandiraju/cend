@@ -81,8 +81,7 @@ c.s=function(){var a=this.getAttribute("exit-id"),b=this.getAttribute("product-i
           <div class="gwd-div-1aky" id="background"></div>
           <img class="gwd-img-1ly0 gwd-gen-1r0dgwdanimation" id="hanuman" is="gwd-image" source="image.png">
           <img is="gwd-image" source="rays.png" id="rays" class="gwd-img-1o00 gwd-gen-1ksfgwdanimation">
-          <p class="gwd-p-1arb gwd-p-141u gwd-p-4bgn gwd-gen-qm6xgwdanimation" id="from">USER <span class="gwd-span-19t2">NAME</span>
-          </p>
+          <p class="gwd-p-1arb gwd-p-141u gwd-p-4bgn gwd-gen-qm6xgwdanimation" id="from">USER</p>
           <p class="gwd-p-1arb gwd-p-12hd gwd-gen-ly44gwdanimation" id="message">May God Bless you with <span class="gwd-span-1ran">health</span> and <span class="gwd-span-bsl0">Happiness</span>
           </p><span class="gwd-span-1tm9 gwd-gen-wu4ggwdanimation">JAI</span><span class="gwd-span-1kic gwd-gen-5xmygwdanimation">BAJRANG</span><span class="gwd-span-n8b5 gwd-gen-jsylgwdanimation">BALI</span><span class="gwd-span-1u0s gwd-gen-dddqgwdanimation">REPLAY</span>
           <gwd-taparea id="gwd-taparea_1" class="gwd-taparea-jt8n"></gwd-taparea>
@@ -102,8 +101,31 @@ c.s=function(){var a=this.getAttribute("exit-id"),b=this.getAttribute("product-i
        * fired when the document has been completely loaded and parsed.
        */
       function handleDomContentLoaded(event) {
+        var params = getUrlParams();
+				var card = params.card;
+				var from = params.from;
+				var to = params.to;
+				var message = params.message;
+				console.log(from);
+				//console.log(to);
+				//console.log(message);
+				//console.log(card);
+        document.querySelector('#from').innerHTML=from;
 
       }
+      
+      
+      function getUrlParams(prop) {
+				var params = {};
+				var search = decodeURIComponent(window.location.href.slice(window.location.href.indexOf('?') + 1));
+				var definitions = search.split('&');
+				definitions.forEach(function(val, key) {
+					var parts = val.split('=', 2);
+					params[parts[0]] = parts[1];
+				});
+				return (prop && prop in params ) ? params[prop] : params;
+			}
+      
 
       /**
        * Handles the WebComponentsReady event. This event is fired when all
