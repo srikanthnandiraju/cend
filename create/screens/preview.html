@@ -152,7 +152,7 @@
 		function getShortURL(longURL) {
 			console.log("Inside get short url");
 			showScreen("#share-screen");
-			var api = 'https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyCMvXG9CB8wfVNttNn6i8KAAyZ7xFGxfRI';
+			var api = 'https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyCtT4hxkWs0z4spK90U3mxnY0h5zok0ieU';
 			$.ajax({
 				type : "POST",
 				url : api,
@@ -177,6 +177,9 @@
 					console.log(whatText);
 
 					showScreen("#share-screen");
+				},
+				error : function(err){
+					console.log("Error calling short URL"+JSON.stringify(err));
 				}
 			});
 		}
