@@ -1,0 +1,29 @@
+<div class="container animated fadeInDown" style="margin-top: 100px;">
+	<div class="row">
+		<div class="col-xs-12 text-center" style="margin:0px;padding:0px;">
+			<div class="panel panel-body white-glass text-center" style="width:300px;margin:auto;padding:40px;">
+				<div class="form-group">
+					<label for="feedback_title">Search Talks</label>
+					<br />
+					<span style="color:silver;">Enter a term like NTR to find KiranPrabha talks about NTR</span>
+					<input type="text" name="search_string" id="search_string" class="form-control input-lg text-center" placeholder="Enter search term" style="margin-top: 20px;border-radius: 0px;" required>
+					<br />
+					<button class="btn btn-primary btn-block btn-lg" id="search-button" style="letter-spacing: 3px;border-radius: 0px;">
+						SEARCH
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(function() {
+		$("#search-button").click(function() {
+			if ($("#search_string").val()) {
+				$('body').trigger('search-by-string', $("#search_string").val());
+				$('#fullscreenElement').removeClass('open');
+			}
+		});
+	}); 
+</script>

@@ -1,0 +1,210 @@
+<style type="text/css" media="screen">
+	#preview_stage {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 50px;
+	}
+	#preview_stage .btn {
+		margin-top: 8px;
+	}
+	#frame-holder {
+		position: absolute;
+		top: 51px;
+		left: 0px;
+		width: 100%;
+		bottom: 0px;
+		right: 0px;
+	}
+	#frame-holder > iframe {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+	}
+
+	#share-screen {
+		position: absolute;
+		top: 30px;
+		left: 0px;
+		width: 100%;
+		height: 50vh;
+		z-index: 555;
+	}
+
+	#close-share-button {
+		letter-spacing: 3px;
+	}
+
+	a:link {
+		color: #fff;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #fff;
+		text-decoration: none;
+	}
+	a:active {
+		color: #fff;
+		text-decoration: none;
+	}
+
+</style>
+
+<div id="share-screen" class="text-center animated" data-in="fadeIn" data-out="fadeOut">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<h2 style="color:white;">Send Card</h2>
+				<h3 style="color:silver;">Select your chat messaging app to share your card</h3>
+				<br />
+			</div>
+		</div>
+		<div class="row text-center" style="margin-top: 26px;">
+			<div class="col-xs-4 text-center" >
+				<a href="#" id="whatsapp_button"><img  class="center-block" src="https://cdn0.iconfinder.com/data/icons/social-flat-rounded-rects/512/whatsapp-64.png" alt="" /> Whatsapp </a>
+			</div>
+
+			<div class="col-xs-4 text-center">
+				<a href="#" id="telegram_button"> <img  class="center-block" src="https://cdn0.iconfinder.com/data/icons/social-flat-rounded-rects/512/telegram-64.png" alt="" /> Telegram </a>
+			</div>
+
+			<div class="col-xs-4 text-center">
+				<a href="#" id="viber_button"> <img  class="center-block" src="https://cdn0.iconfinder.com/data/icons/social-flat-rounded-rects/512/viber-64.png" alt="" /> Viber </a>
+			</div>
+
+			<!-- div class="col-xs-4 text-center">
+			<a href="#" id="sms_button"> <img  class="center-block" src="https://cdn0.iconfinder.com/data/icons/social-flat-rounded-rects/512/telegram-64.png" alt="" /> SMS </a>
+			</div -->
+		</div>
+		<div class="row" style="margin-top:30px;">
+			<div class="col-xs-12">
+				<button id="close-share-button" class="btn btn-danger btn-lg">
+					BACK TO <b>PREVIEW</b>
+				</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div id="preview_stage">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-4 text-center">
+				<select class="form-control input-md" id="card_type" style="width: 100px;">
+					<option value="" disabled selected>DESIGN</option>
+
+				</select>
+			</div>
+			<div class="col-xs-8 text-left">
+				<button id="share_button" class="btn btn-success btn-md" style="margin-top: 0px;">
+					<b>SHARE</b>CARD
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="frame-holder">
+	<iframe id="preview_frame" src="">
+		Your browser does not support inline frames.
+	</iframe>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+	(function() {
+		hideScreen("#share-screen");
+
+		var url_prefix = window.location.protocol + "//" + window.location.host;
+		var iframeURL = url_prefix + PREVIEW_URL;
+		showCardPreview(iframeURL);
+
+		var numberOfDesigns = CARD_DESIGNS[PREVIEW_CARD.occasion];
+		for (var i = 0; i < numberOfDesigns; i++) {
+			$('#card_type').append($("<option></option>").attr("value", i + 1).text(i + 1));
+		}
+
+		$('#card_type').on('change', function() {
+			hideScreen("#share-screen");
+			PREVIEW_CARD.card = this.value;
+			PREVIEW_CARD.url = "/" + PREVIEW_CARD.occasion + "/" + PREVIEW_CARD.card + "/" + PREVIEW_CARD.to + "/" + PREVIEW_CARD.message + "/" + PREVIEW_CARD.from;
+			iframeURL = url_prefix + PREVIEW_CARD.url;
+			showCardPreview(iframeURL);
+		});
+
+		$("#share_button").click(function() {
+			getShortURL(iframeURL);
+		});
+
+		$("#close-share-button").click(function() {
+			hideScreen("#share-screen");
+		});
+
+		function showCardPreview(cardURL) {
+			var iframe = document.getElementById('preview_frame');
+			console.log(cardURL);
+			iframe.setAttribute('src', cardURL);
+		}
+
+		function getShortURL(longURL) {
+			console.log("Inside get short url");
+			showScreen("#share-screen");
+			var api = 'https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyCMvXG9CB8wfVNttNn6i8KAAyZ7xFGxfRI';
+			$.ajax({
+				type : "POST",
+				url : api,
+				data : JSON.stringify({
+					longUrl : longURL
+				}),
+				contentType : 'application/json',
+				success : function(res) {
+
+					var whatText = "whatsapp://send?text=Click here to see your card " + res.id;
+					$("#whatsapp_button").attr('href', whatText);
+
+					var telegramText = "tg://msg?text=Click here to see your card " + res.id;
+					$("#telegram_button").attr('href', telegramText);
+
+					var viberText = "viber://forward?text=Click here to see your card " + res.id;
+					$("#viber_button").attr('href', viberText);
+
+					//$("#telegram_button").attr('href', "com.google.hangouts://chat?message=foo");
+					//$("#telegram_button").attr('href', "viber://forward?text="+res.id);
+
+					console.log(whatText);
+
+					showScreen("#share-screen");
+				}
+			});
+		}
+
+		function manageScreen(screenName, showhide) {
+			var inStyle = $(screenName).attr("data-in");
+			var outStyle = $(screenName).attr("data-out");
+
+			if (showhide) {
+				$(screenName).removeClass(outStyle);
+				$(screenName).addClass(inStyle);
+				$("#frame-holder").hide();
+				$("#preview_stage").hide();
+			} else {
+				$(screenName).removeClass(inStyle);
+				$(screenName).addClass(outStyle);
+				$("#frame-holder").show();
+				$("#preview_stage").show();
+			}
+		}
+
+		function hideScreen(screenName) {
+			manageScreen(screenName, false);
+		}
+
+		function showScreen(screenName) {
+			manageScreen(screenName, true);
+		}
+
+	})(); 
+</script>
