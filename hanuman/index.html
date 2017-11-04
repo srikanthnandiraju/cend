@@ -102,33 +102,27 @@ c.s=function(){var a=this.getAttribute("exit-id"),b=this.getAttribute("product-i
        * Handles the DOMContentLoaded event. The DOMContentLoaded event is
        * fired when the document has been completely loaded and parsed.
        */
-      function handleDomContentLoaded(event) {
-        var params = getUrlParams();
-				var card = params.card;
-				var from = params.from;
-				var to = params.to;
-				var message = params.message;
-				console.log(from);
-				//console.log(to);
-				//console.log(message);
-				//console.log(card);
-	      			if(from!=undefined)	
-        			document.querySelector('#from').innerHTML=from;
+		function handleDomContentLoaded(event) {
+			var params = getUrlParams();
+			var card = params.card;
+			var from = params.from;
+			var to = params.to;
+			var message = params.message;
+			if (from != undefined)
+				document.querySelector('#from').innerHTML = from;
+		}
 
-      }
-      
-      
-      function getUrlParams(prop) {
-				var params = {};
-				var search = decodeURIComponent(window.location.href.slice(window.location.href.indexOf('?') + 1));
-				var definitions = search.split('&');
-				definitions.forEach(function(val, key) {
-					var parts = val.split('=', 2);
-					params[parts[0]] = parts[1];
-				});
-				return (prop && prop in params ) ? params[prop] : params;
-			}
-      
+		function getUrlParams(prop) {
+			var params = {};
+			var search = decodeURIComponent(window.location.href.slice(window.location.href.indexOf('?') + 1));
+			var definitions = search.split('&');
+			definitions.forEach(function(val, key) {
+				var parts = val.split('=', 2);
+				params[parts[0]] = parts[1];
+			});
+			return (prop && prop in params ) ? params[prop] : params;
+		}
+
 
       /**
        * Handles the WebComponentsReady event. This event is fired when all
