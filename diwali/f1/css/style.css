@@ -376,7 +376,7 @@ body {
     left: 10px;
     bottom: 10px;
     right: 10px;
-    /* border: 2px solid yellow; */
+    border: 2px solid yellow;
     display: flex;
     justify-content: center;
     align-items: center;
