@@ -2349,5 +2349,8 @@ if (IS_HEADER) {
     }, 0);
 }
 
-toggleFullscreen(true);
-toggleSound(true);
+// setTimeout(function() {
+//     toggleFullscreen();
+// }, 1000);
+
+// toggleSound(true);
