@@ -2349,5 +2349,5 @@ if (IS_HEADER) {
     }, 0);
 }
 
-toggleFullscreen();
+toggleFullscreen(true);
 toggleSound(true);
