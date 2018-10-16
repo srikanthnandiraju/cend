@@ -422,38 +422,38 @@ if (!fullscreenEnabled()) {
 
 // First render is called in init()
 function renderApp(state) {
-    const pauseBtnIcon = `#icon-${state.paused ? 'play' : 'pause'}`;
-    const soundBtnIcon = `#icon-sound-${soundEnabledSelector() ? 'on' : 'off'}`;
-    appNodes.pauseBtnSVG.setAttribute('href', pauseBtnIcon);
-    appNodes.pauseBtnSVG.setAttribute('xlink:href', pauseBtnIcon);
-    appNodes.soundBtnSVG.setAttribute('href', soundBtnIcon);
-    appNodes.soundBtnSVG.setAttribute('xlink:href', soundBtnIcon);
-    appNodes.controls.classList.toggle('hide', state.menuOpen || state.config.hideControls);
-    appNodes.canvasContainer.classList.toggle('blur', state.menuOpen);
-    appNodes.menu.classList.toggle('hide', !state.menuOpen);
-    appNodes.finaleModeFormOption.style.opacity = state.config.autoLaunch ? 1 : 0.32;
+    // const pauseBtnIcon = `#icon-${state.paused ? 'play' : 'pause'}`;
+    // const soundBtnIcon = `#icon-sound-${soundEnabledSelector() ? 'on' : 'off'}`;
+    // appNodes.pauseBtnSVG.setAttribute('href', pauseBtnIcon);
+    // appNodes.pauseBtnSVG.setAttribute('xlink:href', pauseBtnIcon);
+    // appNodes.soundBtnSVG.setAttribute('href', soundBtnIcon);
+    // appNodes.soundBtnSVG.setAttribute('xlink:href', soundBtnIcon);
+    // appNodes.controls.classList.toggle('hide', state.menuOpen || state.config.hideControls);
+    // appNodes.canvasContainer.classList.toggle('blur', state.menuOpen);
+    // appNodes.menu.classList.toggle('hide', !state.menuOpen);
+    // appNodes.finaleModeFormOption.style.opacity = state.config.autoLaunch ? 1 : 0.32;
 
-    appNodes.quality.value = state.config.quality;
-    appNodes.shellType.value = state.config.shell;
-    appNodes.shellSize.value = state.config.size;
-    appNodes.autoLaunch.checked = state.config.autoLaunch;
-    appNodes.finaleMode.checked = state.config.finale;
-    appNodes.skyLighting.value = state.config.skyLighting;
-    appNodes.hideControls.checked = state.config.hideControls;
-    appNodes.fullscreen.checked = state.fullscreen;
-    appNodes.longExposure.checked = state.config.longExposure;
-    appNodes.scaleFactor.value = state.config.scaleFactor.toFixed(2);
+    // appNodes.quality.value = state.config.quality;
+    // appNodes.shellType.value = state.config.shell;
+    // appNodes.shellSize.value = state.config.size;
+    // appNodes.autoLaunch.checked = state.config.autoLaunch;
+    // appNodes.finaleMode.checked = state.config.finale;
+    // appNodes.skyLighting.value = state.config.skyLighting;
+    // appNodes.hideControls.checked = state.config.hideControls;
+    // appNodes.fullscreen.checked = state.fullscreen;
+    // appNodes.longExposure.checked = state.config.longExposure;
+    // appNodes.scaleFactor.value = state.config.scaleFactor.toFixed(2);
 
-    appNodes.menuInnerWrap.style.opacity = state.openHelpTopic ? 0.12 : 1;
-    appNodes.helpModal.classList.toggle('active', !!state.openHelpTopic);
-    if (state.openHelpTopic) {
-        const {
-            header,
-            body
-        } = helpContent[state.openHelpTopic];
-        appNodes.helpModalHeader.textContent = header;
-        appNodes.helpModalBody.textContent = body;
-    }
+    // appNodes.menuInnerWrap.style.opacity = state.openHelpTopic ? 0.12 : 1;
+    // appNodes.helpModal.classList.toggle('active', !!state.openHelpTopic);
+    // if (state.openHelpTopic) {
+    //     const {
+    //         header,
+    //         body
+    //     } = helpContent[state.openHelpTopic];
+    //     appNodes.helpModalHeader.textContent = header;
+    //     appNodes.helpModalBody.textContent = body;
+    // }
 }
 
 store.subscribe(renderApp);
@@ -2350,11 +2350,19 @@ if (IS_HEADER) {
 }
 
 // setTimeout(function() {
-//     toggleFullscreen();
+//     
 // }, 1000);
 
 // toggleSound(true);
 
+
+function enableSound() {
+    toggleFullscreen();
+    //toggleSound();
+    // document.getElementById("trails-canvas").focus();
+    // togglePause();
+
+}
 
 function handleDomContentLoaded(event) {
     var params = getUrlParams();
@@ -2369,13 +2377,13 @@ function getUrlParams(prop) {
     var params = {};
     var search = decodeURIComponent(window.location.href.slice(window.location.href.indexOf('?') + 1));
     var definitions = search.split('&');
-    definitions.forEach(function(val, key) {
+    definitions.forEach(function (val, key) {
         var parts = val.split('=', 2);
         params[parts[0]] = parts[1];
     });
     return (prop && prop in params) ? params[prop] : params;
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     handleDomContentLoaded();
 });
