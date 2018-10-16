@@ -2353,7 +2353,7 @@ if (IS_HEADER) {
 //     toggleFullscreen();
 // }, 1000);
 
-//toggleSound(true);
+toggleSound(true);
 
 
 function handleDomContentLoaded(event) {
