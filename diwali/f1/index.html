@@ -17,16 +17,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        @import url("https://fonts.googleapis.com/css?family=Bad+Script");
         #card-stage {
             position: absolute;
             top: 10px;
             left: 10px;
             bottom: 10px;
             right: 10px;
-            border: 2px solid yellow;
+            /* border: 2px solid yellow; */
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+        
+        #message {
+            font-family: "Bad Script", cursive;
+            transform: rotate(-15deg);
+            color: white;
+            font-size: 1.2em;
+            line-height: 2;
+            letter-spacing: 0.06em;
+            text-align: center;
+            animation: color-change 30s infinite alternate;
+        }
+        
+        #from-user {
+            font-family: "Bad Script", cursive;
+            transform: rotate(-15deg);
+            color: yellow;
+            text-align: right;
+            line-height: 3;
+            letter-spacing: 0.06em;
+            font-size: 1.2em;
+        }
+        
+        @keyframes color-change {
+            0% {
+                color: yellow;
+            }
+            20% {
+                color: red;
+            }
+            40% {
+                color: aqua;
+            }
+            60% {
+                color: green;
+            }
+            80% {
+                color: white;
+            }
+            100% {
+                color: orange;
+            }
         }
     </style>
 </head>
@@ -145,12 +188,10 @@
 
 
     <div id="card-stage">
-        <div style="text-align:center;">
-            <h2 style="color:white;">Srikanth Wishes you</h2>
-            <!-- <img src="https://ubisafe.org/images/lights-transparent-diwali-3.png" width="300"> -->
-            <img src="https://i.pinimg.com/originals/a1/c1/65/a1c165ead06fc613b7684b10aec47a7e.png" width="200">
-
-            <h2 style="color:white;">Happy Diwali</h2>
+        <div class="animated zoomIn slower">
+            <h1 id="message">Happiness is in the air<br> Its Diwali everywhere<br> Lets show some love and care<br> And wish everyone out there <br>Happy Diwali</h1>
+            <br/>
+            <h1 id="from-user">- Srikanth Nandiraju</h1>
         </div>
     </div>
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/fscreen%401.0.1.js'></script>

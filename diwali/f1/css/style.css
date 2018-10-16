@@ -14,10 +14,10 @@ html {
 
 body {
     overflow: hidden;
-    color: rgba(255, 255, 255, 0.5);
+    /* color: rgba(255, 255, 255, 0.5);
     font-family: "Russo One", arial, sans-serif;
     line-height: 1.25;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.06em; */
 }
 
 .hide {
