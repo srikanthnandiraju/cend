@@ -2364,6 +2364,7 @@ function handleDomContentLoaded(event) {
     console.log("From " + from);
     if (from != undefined)
         document.querySelector('#from-user').innerHTML = "- " + from;
+    $(document).attr("title", from + ", sent a card to you");
 }
 
 function getUrlParams(prop) {
