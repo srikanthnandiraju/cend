@@ -51,35 +51,38 @@
             letter-spacing: 0.06em;
             font-size: 1.2em;
         }
-
-        #button-bar{
+        
+        #button-bar {
             position: absolute;
-            bottom:2px;
-            left:2px;
-            right:2px;
-            height:30px;
+            bottom: 2px;
+            left: 2px;
+            right: 2px;
+            height: 30px;
             /* border:1px dotted gray; */
             text-align: center;
-            color:white;
+            color: white;
         }
-
-        .action-button{
+        
+        .action-button {
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.9em;
             cursor: pointer;
         }
-        .sound-button{
+        
+        .sound-button {
             position: absolute;
-            top:6px;
-            left:5px;
-            height:30px;
+            top: 6px;
+            left: 5px;
+            height: 30px;
         }
-        .fullscreen-button{
+        
+        .fullscreen-button {
             position: absolute;
-            top:6px;
-            right:5px;
-            height:30px;
+            top: 6px;
+            right: 5px;
+            height: 30px;
         }
+        
         @keyframes color-change {
             0% {
                 color: yellow;
@@ -220,14 +223,13 @@
 
     <div id="card-stage">
         <div class="animated zoomIn slower">
-            <h1 id="message">Happiness is in the air<br> Its Diwali everywhere<br> Lets show some love and care<br> And
-                wish everyone out there <br>Happy Diwali</h1>
+            <h1 id="message">Happiness is in the air<br> Its Diwali everywhere<br> Lets show some love and care<br> And wish everyone out there <br>Happy Diwali</h1>
             <br />
             <h1 id="from-user">- Cend.in Team</h1>
         </div>
         <div id="button-bar">
-            <div class="sound-button action-button" onclick="enableSound()">sound</div>
-            <div id="fs-button" class="fullscreen-button action-button">fullscreen</div>
+            <div class="sound-button action-button"></div>
+            <div id="fs-button" class="fullscreen-button action-button" onclick="enableSound()">Enable Sound</div>
         </div>
     </div>
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/fscreen%401.0.1.js'></script>
