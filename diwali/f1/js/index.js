@@ -2362,9 +2362,14 @@ function handleDomContentLoaded(event) {
     var from = params.from;
     // var message = params.message;
     console.log("From " + from);
-    if (from != undefined)
+    if (from != undefined) {
         document.querySelector('#from-user').innerHTML = "- " + from;
-    $(document).attr("title", from + ", sent a card to you");
+        document.title = from + ', sent a cart for you';
+    }
+
+
+
+
 }
 
 function getUrlParams(prop) {
