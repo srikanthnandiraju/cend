@@ -111,16 +111,16 @@
             font-size: 1.2em;
         }
         
-        ui>.li {
-            border: 2px solid red !important;
+        .texts {
+            margin-left: -100px !important;
         }
     </style>
 </head>
 
 <body>
 
-    <h2 id="to" data-in-effect="rollIn" data-delay="200">A</h2>
-    <h2 id="from" data-in-effect="swing">B</h2>
+    <h2 id="to" data-in-effect="rollIn" data-delay="200">&nbsp;</h2>
+    <h2 id="from" data-in-effect="swing">&nbsp;</h2>
 
     <div id="stage">
 
@@ -196,13 +196,14 @@
                     },
                 });
 
-                $('li').css('margin-left', "-120px");
+                $('ul').css('margin-left', "-120px !important");
 
             }
 
             function getUrlParams(prop) {
                 var params = {};
-                var search = decodeURIComponent(window.location.href.slice(window.location.href.indexOf('?') + 1));
+                var search = decodeURIComponent(window.location.href.slice(window.location.href.indexOf('?') +
+                    1));
                 var definitions = search.split('&');
                 definitions.forEach(function(val, key) {
                     var parts = val.split('=', 2);
