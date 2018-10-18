@@ -53,13 +53,16 @@ function handleDomContentLoaded(event) {
     var from = params.from;
     var to = params.to;
     var message = params.message;
-    console.log("From " + from);
     if (from != undefined) {
         document.querySelector('#from').innerHTML = from;
         document.title = from + ' sent a card for you';
+    } else {
+        $("#from").remove();
     }
     if (to != undefined) {
         document.querySelector('#to').innerHTML = to;
+    } else {
+        $("#to").remove();
     }
     if (message != undefined) {
         document.querySelector('#message').innerHTML = message;
