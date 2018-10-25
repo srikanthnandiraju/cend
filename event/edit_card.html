@@ -1,0 +1,36 @@
+<div class="flexy">
+    <div class="ui segment very raised center aligned" style="color:white;width:200px;margin: auto;text-align: center;">
+        <div class="ui form">
+            <div class="field">
+                <input type="text" id="cend-to" placeholder="receiver name">
+            </div>
+            <div class="field">
+                <textarea rows="2" id="cend-message" placeholder="Enter message"></textarea>
+            </div>
+            <div class="field">
+                <input type="text" id="cend-from" placeholder="your name">
+            </div>
+            <div class="field center aligned">
+                <div style="text-align:center;">
+                    <button class="ui button blue" id="preview-button">Preview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#preview-button").off('click').on('click', function () {
+            var to = $("#cend-to").val();
+            var message = $("#cend-message").val();
+            var from = $("#cend-from").val();
+            var card_payload = {
+                to: to,
+                message: message,
+                from: from
+            };
+            App.Events.emit("card-edited", card_payload);
+            App.FullScreen.hide();
+        });
+    });
+</script>

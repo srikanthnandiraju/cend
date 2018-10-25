@@ -1,0 +1,81 @@
+body,
+html {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#stage {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    right: 0px;
+    bottom: 2px;
+    overflow: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+#stage::-webkit-scrollbar {
+    display: none;
+}
+
+#fullscreenElement {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-transform: translate(0px, -100%) scale(0, 0);
+    -moz-transform: translate(0px, -100%) scale(0, 0);
+    -o-transform: translate(0px, -100%) scale(0, 0);
+    -ms-transform: translate(0px, -100%) scale(0, 0);
+    transform: translate(0px, -100%) scale(0, 0);
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    /*	background: url(../img/bg.jpg) no-repeat center top;*/
+    /*background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.4)), url(../img/bg.jpg) no-repeat center center;*/
+    background-size: cover;
+    z-index: 10000 !important;
+}
+
+#fullscreenElement.open {
+    -webkit-transform: translate(0px, 0px) scale(1, 1);
+    -moz-transform: translate(0px, 0px) scale(1, 1);
+    -o-transform: translate(0px, 0px) scale(1, 1);
+    -ms-transform: translate(0px, 0px) scale(1, 1);
+    transform: translate(0px, 0px) scale(1, 1);
+    opacity: 1;
+}
+
+.close {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    opacity: 1;
+    padding: 10px 17px;
+    z-index: 1000 !important;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#fullscreen_stage {
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+    position: absolute;
+    top: 25px;
+    left: 1px;
+    bottom: 1px;
+    right: 1px;
+}
+
+.flexy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
