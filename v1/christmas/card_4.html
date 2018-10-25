@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>[ CEND.IN ]</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css' rel='stylesheet' type='text/css'>
+    <style type="text/css" media="screen">
+        @font-face {
+            font-family: "CHRISTMAS SOUNDS";
+            src: url("https://dl.dropboxusercontent.com/u/40059369/cend/assets/fonts/CHRISTMAS%20SOUNDS.ttf") format("truetype");
+        }
+        
+        h1 {
+            font-family: "CHRISTMAS SOUNDS";
+            font-size: 4em;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+        }
+        
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+            position: reelative;
+        }
+        
+        #stage {
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+            overflow-y: scroll;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            width: 100%;
+            height: 100vh;
+            /*border: 2px solid black;*/
+            margin: 0px;
+            padding: 0px;
+            perspective: 1000px;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url(../assets/christmas/bench.png) no-repeat center center;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        
+        #greeting {
+            padding: 10px;
+            color: white;
+            letter-spacing: 3px;
+        }
+        
+        #message {
+            letter-spacing: 2px;
+            padding: 15px;
+            color: white;
+            font-size: 2em;
+        }
+        
+        #to {
+            font-size: 4em;
+            color: orange;
+            text-transform: uppercase;
+        }
+        
+        #from {
+            font-size: 4em;
+            color: orange;
+            text-transform: uppercase;
+        }
+        
+        #particles-bg {
+            position: absolute;
+            background: transparent;
+            width: 100%;
+            height: 100vh;
+            top: 0px;
+            left: 0px;
+        }
+        
+        .slice1 {
+            font-size: 5em;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            font-weight: bold;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        
+        .slice2 {
+            margin-top: -10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="stage" class="text-center">
+
+
+        <h1 class="tlt slice1">
+            <ul class="texts">
+                <li data-in-effect="bounceInUp" data-out-shuffle="true" data-sync="true">
+                    MERRY
+                </li>
+                <li data-in-effect="bounceInDown" data-out-effect="bounceOut">
+                    HAPPY
+                </li>
+                <li data-in-effect="rotateInUpLeft" data-out-effect="flipOutY">
+                    JOLLY
+                </li>
+            </ul>
+        </h1>
+
+        <h1 class="slice2">CHRISTMAS</h1>
+
+        <h1 id="to">{{to}}</h1>
+
+        <p id="message"> {{message}} </p>
+
+        <h1 id="from">{{from}}</h1>
+    </div>
+
+    <div id="particles-bg"></div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script>
+    <script src="../cards_js/jquery.textillate.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            particlesJS.load('particles-bg', '../cards_js/snows.json', function() {});
+
+            $(".slice1").fitText(0.4);
+            $(".slice2").fitText(0.7);
+            $("#to").fitText(0.7);
+
+            $('.tlt').textillate({
+                loop: true,
+                minDisplayTime: 1000,
+                out: {
+                    effect: 'rollOut',
+                    //delayScale : 500,
+                    delay: 0,
+                    sync: false,
+                    shuffle: false,
+                    reverse: true,
+                    callback: function() {}
+                },
+            });
+
+            $('#to').textillate({
+                loop: true,
+                minDisplayTime: 1000,
+                in: {
+                    effect: 'tada'
+                },
+                out: {
+                    effect: 'rollOut'
+                },
+            });
+
+        });
+    </script>
+</body>
+
+</html>

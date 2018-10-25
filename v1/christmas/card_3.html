@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>[ CEND.IN ]</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,900' rel='stylesheet' type='text/css'>
+
+    <style type="text/css" media="screen">
+        html,
+        body {
+            -webkit-font-smoothing: antialiased;
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Lato', sans-serif;
+            background: #efefef;
+            color: white;
+            height: 100%;
+            position: reelative;
+        }
+        
+        #stage {
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+            overflow-y: scroll;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            width: 100%;
+            height: 100vh;
+            /*border: 2px solid black;*/
+            margin: 0px;
+            padding: 0px;
+            perspective: 1000px;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url(../assets/christmas/christmas_6.png) no-repeat center center;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        
+        [data-sr] {
+            visibility: hidden;
+        }
+        
+        #greeting {
+            padding: 10px;
+            font-size: 2em;
+        }
+        
+        #from {
+            margin-top: 10px;
+            padding: 5px;
+        }
+        
+        #to {
+            margin-top: 20px;
+        }
+        
+        #message {
+            padding: 10px 50px;
+            letter-spacing: 2px;
+            line-height: 30px;
+        }
+        
+        #row_1 {
+            padding: 20px;
+            margin: 0px;
+        }
+        
+        #row_2 {
+            padding: 20px;
+            margin: 0px;
+        }
+        
+        #row_3 {
+            padding: 20px;
+            margin: 0px;
+        }
+        
+        #row_4 {
+            padding: 10px;
+            margin: 0px;
+        }
+        
+        #footer {
+            height: 50px;
+        }
+        
+        #to {
+            animation-duration: 2s;
+            animation-delay: 50s;
+            animation-iteration-count: infinite;
+        }
+        
+        #particles-bg {
+            position: absolute;
+            background: transparent;
+            width: 100%;
+            height: 100vh;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="stage" class="text-center">
+
+        <div id="row_1">
+            <h1 data-sr="wait 1s, enter right, move 160px, over 2s"><b style="letter-spacing: 5px;font-family: Verdana;font-weight: bold:">MERRY</b>
+                <br>
+                <span data-sr="wait 3s, scale up 20%">CHRISTMAS<span></h1>
+			<br>
+			<br />
+			<img data-sr="wait 2s, roll 180deg ,over 2s" class="center-block" src="https://cdn3.iconfinder.com/data/icons/badger-s-christmas/300/bells-128.png"
+			 alt="" />
+		</div>
+
+		<div id="row_2" data-sr="wait 2.5s, ease-in-out 360px over 2s">
+			<h1 id="to" class="animated pulse">{{to}}</h1>
+		</div>
+
+		<div id="row_3" data-sr="wait 4s, ease-in-out 100px over 2s">
+			<h1 id="message"> {{message}} </h1>
+		</div>
+
+		<div id="row_4" data-sr="enter left, move 300px, over 2s">
+			<h1 id="from" data-sr="scale up 50%, over 2s">{{from}}</h1>
+		</div>
+		<div id="footer">
+
+		</div>
+	</div>
+	<div id="particles-bg"></div>
+
+	<!-- script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js"></script -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/2.3.2/scrollReveal.min.js"></script>
+
+	<script>
+		/*$(document).ready(function() {
+			 $("h1").fitText(0.6);
+			 });*/
+		particlesJS.load('particles-bg', '../cards_js/stars.json', function () {});
+		var config = {
+			reset: true,
+			mobile: true,
+			vFactor: 0.1,
+			viewport: document.getElementById('stage')
+		};
+		window.sr = new scrollReveal(config);
+	</script>
+</body>
+
+</html>

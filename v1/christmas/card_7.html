@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>[ CEND.IN ]</title>
+    <link href='https://fonts.googleapis.com/css?family=Rammetto+One' rel='stylesheet' type='text/css'>
+    <style type="text/css" media="screen">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Rammetto One', cursive;
+        }
+        
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        html,
+        body {
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, 0.1)), url('../assets/christmas/snow_6.png') no-repeat top center;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        
+        #to {
+            /*position: absolute;
+				 top: 20px;
+				 left: 20px;
+				 right: 20px;*/
+            color: white;
+            font-size: 30px;
+            text-align: center;
+            font-family: 'Fascinate Inline', cursive;
+        }
+        
+        #from {
+            /*position: absolute;
+				 bottom: 20px;
+				 left: 20px;
+				 right: 20px;*/
+            color: white;
+            font-size: 30px;
+            text-align: center;
+        }
+        
+        #message_table {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            display: table;
+            text-align: center;
+            background: none;
+            /*background:rgba(255,255,255,0.3);*/
+        }
+        
+        #message {
+            display: table-cell;
+            vertical-align: middle;
+            background: none;
+            color: white;
+        }
+        
+        .otto {
+            color: #fff;
+            font-size: 2em;
+            text-shadow: -1px -1px 3px #333;
+            padding: 20px;
+            background-image: circle closest-side, yellow, #f06d06;
+        }
+        
+        #greeting {
+            font-size: 2em;
+            letter-spacing: 2px;
+            text-shadow: -1px -2px 3px #111;
+            padding: 20px;
+            color: white;
+        }
+        
+        .gradient1 {
+            background-image: radial-gradient(circle, rgba(0, 0, 0, 0.1), transparent);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="message_table">
+
+        <div id="message">
+            <h2 class="otto gradient">{{to}}</h2>
+            <p id="greeting" class="gradient" style="font-family: Verdana;font-size: 15px;"> {{message}} </p>
+            <h2 class="otto gradient"> {{from}}</h2>
+        </div>
+
+    </div>
+    <canvas id="canvas"></canvas>
+    <script src="../cards_js/snow.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script>
+    <script type="text/javascript" charset="utf-8">
+        $("h2").fitText(0.9);
+        var flow = new TimelineMax({
+            repeat: 2,
+            repeatDelay: 3
+        });
+        //flow.addLabel("startimages", 10);
+
+        flow.staggerFrom("h2", 2, {
+            opacity: 0,
+            //ease : Bounce.easeIn,
+            scale: 3,
+            cycle: {
+                x: [400, -400],
+                //rotation : [-120, 120],
+                //transformOrigin : ["50% top", "50% bottom"]
+            }
+        }, 1);
+    </script>
+</body>
+
+</html>
