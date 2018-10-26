@@ -1,163 +1,159 @@
 <style type="text/css" media="screen">
-	.help-block-light {
-		color: white;
-	}
-	* {
-		-webkit-border-radius: 0 !important;
-		-moz-border-radius: 0 !important;
-		border-radius: 0 !important;
-	}
-
-	#preview_button {
-		margin-top: 30px;
-	}
-
-	.big-dark-input {
-		/*background: rgba(0,0,0,0.6);
+    .help-block-light {
+        color: white;
+    }
+    
+    * {
+        -webkit-border-radius: 0 !important;
+        -moz-border-radius: 0 !important;
+        border-radius: 0 !important;
+    }
+    
+    #preview_button {
+        margin-top: 30px;
+    }
+    
+    .big-dark-input {
+        /*background: rgba(0,0,0,0.6);
 		 color: #FFF;
 		 border: 1px dotted silver;*/
-		font-weight: bold;
-		color: black;
-	}
-
+        font-weight: bold;
+        color: black;
+    }
 </style>
 <form id="create_form" novalidate="novalidate">
-	<input type="hidden" id="feedback_user" value="" name="feedback_user">
-	<div style="margin-top: 10px;" class="container animated fadeInDown">
-		<div class="row">
-			<div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+    <input type="hidden" id="feedback_user" value="" name="feedback_user">
+    <div style="margin-top: 10px;" class="container animated fadeInDown">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
 
-				<div class="panel-body" style="padding:20px 5px;">
+                <div class="panel-body" style="padding:20px 5px;">
 
-					<div class="form-group text-left">
-						<label for="to">Occasion</label>
-						<select class="form-control input-lg" id="cccasion">
-							<option value="hanuman">Hanuman</option>
-							<option value="laxmi">Laxmi Devi</option>
-							<!-- <option value="birthday">Birthday</option>
+                    <div class="form-group text-left">
+                        <label for="to">Occasion</label>
+                        <select class="form-control input-lg" id="cccasion">
+							<option value="birthday">Birthday</option>
 							<option value="christmas">Christmas</option>
 							<option value="announce">Announce</option>
-							<option value="newyear">New Year</option> -->
+							<option value="newyear">New Year</option>
 						</select>
-					</div>
+                    </div>
 
-					<div class="row">
-						<div class="col-xs-6">
-							<div class="form-group text-left">
-								<label for="to">To</label>
-								<input type="text" placeholder="Receiver name" class="form-control input-lg big-dark-input" id="to" name="to">
-							</div>
-						</div>
-						<div class="col-xs-6">
-							<div class="form-group text-left">
-								<label for="from">From</label>
-								<input  class="form-control input-lg big-dark-input" name="from" id="from" placeholder="Sender name">
-							</div>
-						</div>
-					</div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group text-left">
+                                <label for="to">To</label>
+                                <input type="text" placeholder="Receiver name" class="form-control input-lg big-dark-input" id="to" name="to">
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group text-left">
+                                <label for="from">From</label>
+                                <input class="form-control input-lg big-dark-input" name="from" id="from" placeholder="Sender name">
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="form-group text-left">
-						<label for="message">Message Text</label>
-						<textarea  class="form-control input-lg big-dark-input" name="message" id="message" placeholder="enter the message here"></textarea>
-					</div>
+                    <div class="form-group text-left">
+                        <label for="message">Message Text</label>
+                        <textarea class="form-control input-lg big-dark-input" name="message" id="message" placeholder="enter the message here"></textarea>
+                    </div>
 
-					<button class="btn btn-primary btn-block btn-lg"  type="submit" id="preview_button">
+                    <button class="btn btn-primary btn-block btn-lg" type="submit" id="preview_button">
 						<b>PREVIEW </b>CARD
 					</button>
 
-				</div>
+                </div>
 
-			</div>
-		</div>
+            </div>
+        </div>
 
-	</div>
+    </div>
 </form>
 <script type="text/javascript" charset="utf-8">
-	(function() {
-		$("#homebutton").show();
+    (function() {
+        $("#homebutton").show();
 
-		$(document.body).on('click', '.rating-button', function() {
-			var rating_value = $(this).attr("data-rating");
-			$("#rating").val(rating_value);
-			console.log(rating_value);
-		});
+        $(document.body).on('click', '.rating-button', function() {
+            var rating_value = $(this).attr("data-rating");
+            $("#rating").val(rating_value);
+            console.log(rating_value);
+        });
 
-		var validator = $('#create_form').validate({
-			ignore : [],
-			rules : {
-				/*to : {
-				 minlength : 5,
-				 maxlength : 200,
-				 required : true
-				 },
-				 message : {
-				 minlength : 5,
-				 maxlength : 1000,
-				 required : true
-				 },
-				 from : {
-				 minlength : 5,
-				 maxlength : 200,
-				 required : true
-				 }*/
-			},
-			highlight : function(element) {
-				$(element).closest('.form-group').addClass('has-error');
-			},
-			unhighlight : function(element) {
-				$(element).closest('.form-group').removeClass('has-error');
-			},
-			errorElement : 'span',
-			errorClass : 'help-block-light',
-			errorPlacement : function(error, element) {
-				if (element.parent('.input-group').length) {
-					error.insertAfter(element.parent());
-				} else {
-					error.insertAfter(element);
-				}
-			},
-			submitHandler : function(form) {
-				var cccasion = $("#cccasion").val();
-				var to = $("#to").val();
-				var message = $("#message").val();
-				var from = $("#from").val();
+        var validator = $('#create_form').validate({
+            ignore: [],
+            rules: {
+                /*to : {
+                 minlength : 5,
+                 maxlength : 200,
+                 required : true
+                 },
+                 message : {
+                 minlength : 5,
+                 maxlength : 1000,
+                 required : true
+                 },
+                 from : {
+                 minlength : 5,
+                 maxlength : 200,
+                 required : true
+                 }*/
+            },
+            highlight: function(element) {
+                $(element).closest('.form-group').addClass('has-error');
+            },
+            unhighlight: function(element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block-light',
+            errorPlacement: function(error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            submitHandler: function(form) {
+                var cccasion = $("#cccasion").val();
+                var to = $("#to").val();
+                var message = $("#message").val();
+                var from = $("#from").val();
 
-				if (to) {
-					to = encodeURIComponent(to);
-					//to = to.replace(/ /g, "-");
-				} else {
-					to = "-";
-				}
-				if (message) {
-					message = encodeURIComponent(message);
-					//message = message.replace(/ /g, "-");
-				} else {
-					message = "-";
-				}
-				if (from) {
-					from = encodeURIComponent(from);
-					//from = from.replace(/ /g, "-");
-				} else {
-					from = "-";
-				}
+                if (to) {
+                    to = encodeURIComponent(to);
+                    //to = to.replace(/ /g, "-");
+                } else {
+                    to = "-";
+                }
+                if (message) {
+                    message = encodeURIComponent(message);
+                    //message = message.replace(/ /g, "-");
+                } else {
+                    message = "-";
+                }
+                if (from) {
+                    from = encodeURIComponent(from);
+                    //from = from.replace(/ /g, "-");
+                } else {
+                    from = "-";
+                }
 
-				//PREVIEW_URL = "/" + cccasion + "/" + to + "/" + message + "/" + from;
-				PREVIEW_URL = "/" + cccasion + "/?from=" +  from;
-				
-				PREVIEW_CARD = {
-					occasion : cccasion,
-					to : to,
-					from : from,
-					message : message,
-					card : 0,
-					url : PREVIEW_URL
-				};
+                PREVIEW_URL = "../../v1/" + cccasion + "/card_1.html?to=" + to + "&message=" + message + "&from=" + from;
+                PREVIEW_CARD = {
+                    occasion: cccasion,
+                    to: to,
+                    from: from,
+                    message: message,
+                    card: 0,
+                    url: PREVIEW_URL
+                };
 
-				console.log(PREVIEW_URL);
-				$('body').trigger('preview-card');
+                console.log(PREVIEW_URL);
+                $('body').trigger('preview-card');
 
-			}
-		});
+            }
+        });
 
-	})(); 
+    })();
 </script>

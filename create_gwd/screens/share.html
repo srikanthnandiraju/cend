@@ -1,0 +1,42 @@
+<style type="text/css" media="screen">
+	.btn {
+		border-radius: 0px;
+	}
+</style>
+<div class="container animated fadeInDown" style="margin-top: 50px;" id="home-screen">
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<div class="panel panel-body white-glass pad15" style="width:250px;margin: auto;">
+				<button class="btn btn-info btn-lg btn-block" id="twitter-button">
+					SHARE ON TWITTER
+				</button>
+				<br />
+				<button class="btn btn-primary btn-lg btn-block" id="facebook-button">
+					SHARE ON FACEBOOK
+				</button>
+				<br />
+				<button class="btn btn-warning btn-lg btn-block" id="google-button" >
+					SHARE ON GOOGLE+
+				</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		$("#homebutton").show();
+		var shareMessage = "KiranPrabha%20App.%20Download%20for%20iPhone%20http%3A%2F%2Fgoo.gl%2FzKtKJ3%2C%20Download%20for%20Android%20http%3A%2F%2Fgoo.gl%2FwP1Ady";
+		$("#homebutton").show();
+		$("#twitter-button").click(function() {
+			var ref = window.open('https://www.twitter.com/share?text=' + shareMessage, '_blank', 'location=no');
+		});
+		$("#facebook-button").click(function() {
+			var ref = window.open('https://www.facebook.com/sharer/sharer.php?u=' + shareMessage + "&t=KiranPrabha", '_blank', 'location=no');
+		});
+		$("#google-button").click(function() {
+			var ref = window.open('https://plus.google.com/share?url=' + shareMessage, '_blank', 'location=no');
+		});
+	});
+</script>
