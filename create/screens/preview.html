@@ -147,7 +147,7 @@
             hideScreen("#share-screen");
 
             PREVIEW_CARD.card = this.value;
-            PREVIEW_CARD.url = "/" + PREVIEW_CARD.occasion + "/" + PREVIEW_CARD.card + "/" + PREVIEW_CARD.to + "/" +
+            PREVIEW_CARD.url = "../../v1/" + PREVIEW_CARD.occasion + "/" + PREVIEW_CARD.card + "/" + PREVIEW_CARD.to + "/" +
                 PREVIEW_CARD.message + "/" + PREVIEW_CARD.from;
             iframeURL = url_prefix + PREVIEW_CARD.url;
             showCardPreview(iframeURL);
