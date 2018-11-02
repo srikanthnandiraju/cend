@@ -1,4 +1,4 @@
-body,
+/* body,
 html {
     margin: 0px;
     padding: 0px;
@@ -18,7 +18,7 @@ html {
 
 #stage::-webkit-scrollbar {
     display: none;
-}
+} */
 
 #fullscreenElement {
     position: absolute;
@@ -82,7 +82,7 @@ html {
 
 #action-bar {
     position: absolute;
-    bottom: 10px;
+    bottom: 1px;
     left: 1px;
     right: 1px;
     z-index: 9999;
