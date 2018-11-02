@@ -1,0 +1,43 @@
+<style type="text/css" media="screen">
+    .btn {
+        border-radius: 0px;
+    }
+</style>
+<div class="flexy screen-wrapper">
+    <div class="ui container animated bounceInUp center aligned">
+        <button class="ui facebook fluid button" id="facebook-button">
+            <i class="facebook icon"></i>
+            SHARE ON FACEBOOK
+        </button>
+        <br>
+        <button class="ui twitter fluid  button" id="twitter-button">
+            <i class="twitter icon"></i>
+            SHARE ON TWITTER
+        </button>
+        <br>
+        <button class="ui google plus fluid button" id="google-button">
+            <i class="google plus icon"></i>
+            SHARE ON GOOGLE+
+        </button>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#homebutton").show();
+        var shareMessage = "You got a card!. ";
+
+        $("#twitter-button").click(function () {
+            var ref = window.open('https://www.twitter.com/share?text=' + shareMessage, '_blank',
+                'location=no');
+        });
+        $("#facebook-button").click(function () {
+            var ref = window.open('https://www.facebook.com/sharer/sharer.php?u=' + shareMessage +
+                "&t=cend",
+                '_blank', 'location=no');
+        });
+        $("#google-button").click(function () {
+            var ref = window.open('https://plus.google.com/share?url=' + shareMessage, '_blank',
+                'location=no');
+        });
+    });
+</script>

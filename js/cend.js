@@ -70,8 +70,14 @@ function firstReadAndSetParameters() {
 }
 
 App.Events.listen("show-edit-card", function (data) {
-    App.FullScreen.show("http://cend.in/event_template/edit_card.html");
+    //App.FullScreen.show("http://cend.in/event_template/edit_card.html");
+    App.FullScreen.show("../event_template/edit_card.html");
 });
+App.Events.listen("share-card", function (data) {
+    //App.FullScreen.show("http://cend.in/event_template/share_card.html");
+    App.FullScreen.show("../event_template/share_card.html");
+});
+
 App.Events.listen("card-edited", function (payload) {
     $("#to").html(payload.to);
     $("#message").html(payload.message);
