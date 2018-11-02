@@ -35,30 +35,16 @@
             var to = $("#cend-to").val();
             var message = $("#cend-message").val();
             var from = $("#cend-from").val();
-            // var card_payload = {
-            //     to: to,
-            //     message: message,
-            //     from: from
-            // };
+            var card_payload = {
+                to: to,
+                message: message,
+                from: from
+            };
             //App.Events.emit("card-edited", card_payload);
-            App.FullScreen.hide();
+            //App.FullScreen.hide();
             var base_string = window.location.href;
             base_string = base_string.substring(0, base_string.indexOf("?") + 1);
-
-
-            if (to) {
-                base_string = base_string + "to=" + to;
-            }
-
-            if (message) {
-                base_string = base_string + "&message=" + message;
-            }
-
-            if (from) {
-                base_string = base_string + "&from=" + from;
-            }
-
-            window.location.href = base_string;
+            window.location.href = base_string + $.param(card_payload);
 
         });
     });
