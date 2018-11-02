@@ -79,3 +79,21 @@ html {
     justify-content: center;
     align-items: center;
 }
+
+#action-bar {
+    position: absolute;
+    bottom: 10px;
+    left: 1px;
+    right: 1px;
+    z-index: 9999;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px dotted #111;
+}
+
+button {
+    border-radius: 20px !important;
+    margin: 5px 3px !important;
+    margin-bottom: 8px;
+    font-family: Verdana;
+}

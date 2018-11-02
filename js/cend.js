@@ -48,42 +48,49 @@ function getUrlParams(prop) {
     return (prop && prop in params) ? params[prop] : params;
 }
 
-function handleDomContentLoaded(event) {
+function firstReadAndSetParameters() {
     var params = getUrlParams();
     var from = params.from;
     var to = params.to;
     var message = params.message;
     if (from != undefined) {
-        document.querySelector('#from').innerHTML = from;
+        $('#from').html(from);
         document.title = from + ' sent a card for you';
     } else {
         $("#from").remove();
     }
     if (to != undefined) {
-        document.querySelector('#to').innerHTML = to;
+        $('#to').html(to);
     } else {
         $("#to").remove();
     }
     if (message != undefined) {
-        document.querySelector('#message').innerHTML = message;
+        $('#message').html(message);
     }
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    handleDomContentLoaded();
-});
 
 App.Events.listen("show-edit-card", function (data) {
     App.FullScreen.show("edit_card.html");
 });
 App.Events.listen("card-edited", function (payload) {
-    if (payload.to) {
-        $("#to").html(payload.to);
-    }
-    if (payload.message) {
-        $("#message").html(payload.message);
-    }
-    if (payload.from) {
-        $("#from").html(payload.from);
-    }
+    $("#to").html(payload.to);
+    $("#message").html(payload.message);
+    $("#from").html(payload.from);
 });
+
+
+App.Events.listen("show-action-bar", function (payload) {
+    $("#action-bar").show("fast");
+});
+
+App.Events.listen("hide-action-bar", function (payload) {
+    $("#action-bar").hide();
+});
+
+function initCard() {
+    $("#action-bar").hide();
+    // $("#share-button").hide();
+    // $("#create-button").click(function (e) {
+    //     $("#share-button").show();
+    // });
+}
