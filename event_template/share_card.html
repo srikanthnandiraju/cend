@@ -1,10 +1,7 @@
 <style type="text/css" media="screen">
-    .btn {
-        border-radius: 0px;
-    }
 </style>
 <div class="flexy screen-wrapper">
-    <div class="ui container animated bounceInUp center aligned">
+    <div class="ui container center aligned  animated fadeInUp">
         <button class="ui facebook fluid button" id="facebook-button">
             <i class="facebook icon"></i>
             SHARE ON FACEBOOK
@@ -24,7 +21,7 @@
 <script>
     $(function () {
         $("#homebutton").show();
-        var shareMessage = "You got a card!. ";
+        var shareMessage = "You got a card!. " + window.location.href;
 
         $("#twitter-button").click(function () {
             var ref = window.open('https://www.twitter.com/share?text=' + shareMessage, '_blank',
