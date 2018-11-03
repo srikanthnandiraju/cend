@@ -53,13 +53,13 @@ html {
     opacity: 1;
 }
 
-.close {
+.close .close-button {
     position: absolute;
     top: 25px;
     right: 30px;
     opacity: 1;
     padding: 10px 17px;
-    z-index: 1000 !important;
+    z-index: 9999999 !important;
     background: rgba(0, 0, 0, 0.3);
 }
 

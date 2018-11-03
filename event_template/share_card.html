@@ -1,7 +1,8 @@
 <style type="text/css" media="screen">
+
 </style>
 <div class="flexy screen-wrapper">
-    <div class="ui container center aligned  animated fadeInUp">
+    <div class="ui basic segment center aligned  animated fadeInUp">
         <button class="ui facebook fluid button" id="facebook-button">
             <i class="facebook icon"></i>
             SHARE ON FACEBOOK
@@ -19,20 +20,19 @@
     </div>
 </div>
 <script>
-    $(function () {
-        $("#homebutton").show();
+    $(function() {
         var shareMessage = "You got a card!. " + window.location.href;
 
-        $("#twitter-button").click(function () {
+        $("#twitter-button").click(function() {
             var ref = window.open('https://www.twitter.com/share?text=' + shareMessage, '_blank',
                 'location=no');
         });
-        $("#facebook-button").click(function () {
+        $("#facebook-button").click(function() {
             var ref = window.open('https://www.facebook.com/sharer/sharer.php?u=' + shareMessage +
                 "&t=cend",
                 '_blank', 'location=no');
         });
-        $("#google-button").click(function () {
+        $("#google-button").click(function() {
             var ref = window.open('https://plus.google.com/share?url=' + shareMessage, '_blank',
                 'location=no');
         });
