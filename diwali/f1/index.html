@@ -21,6 +21,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet">
     <link href='../../css/default.css' rel='stylesheet' type='text/css'>
     <style>
+        body {
+            background: black;
+            color: white;
+        }
+        
         @import url("https://fonts.googleapis.com/css?family=Bad+Script");
         #card-stage {
             position: absolute;
@@ -243,7 +248,7 @@
 
     <div id="action-bar">
         <!-- <button class="ui tiny button inverted outline" id="replay-button" onclick="javascript:App.Events.emit('replay-card')">Replay</button> -->
-        <button class="ui tiny button inverted" id="create-button" onclick="javascript:App.Events.emit('show-edit-card')">Create
+        <button class="ui tiny button inverted" id="create-button" onclick="togglePause();App.Events.emit('show-edit-card')">Create
             your card</button>
         <button class="ui tiny button inverted" id="share-button" onclick="javascript:App.Events.emit('share-card')">Share</button>
         <button class="ui tiny button inverted" id="share-button" onclick="javascript:toggleSound()">Sound</button>
