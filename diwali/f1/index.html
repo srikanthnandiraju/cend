@@ -251,7 +251,7 @@
         <button class="ui tiny button inverted" id="create-button" onclick="togglePause();App.Events.emit('show-edit-card')">Create
             your card</button>
         <button class="ui tiny button inverted" id="share-button" onclick="javascript:App.Events.emit('share-card')">Share</button>
-        <button class="ui tiny button inverted" id="share-button" onclick="javascript:toggleSound()">Sound</button>
+        <button class="ui tiny button inverted" id="share-button" onclick="javascript:toggleSound();toggleFullscreen();">Sound</button>
     </div>
     <div id="fullscreenElement">
         <i class="io remove icon close big inverted"></i>
