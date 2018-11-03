@@ -3,36 +3,36 @@ App.baseURL = "http://cend.in/";
 
 // Global Event Bus to fire and listen to events
 App.Events = {
-    emit: function (event_name, event_payload) {
+    emit: function(event_name, event_payload) {
         $('body').trigger(event_name, event_payload);
     },
-    listen: function (event_name, callback) {
-        $('body').unbind(event_name).bind(event_name, function (e, data) {
+    listen: function(event_name, callback) {
+        $('body').unbind(event_name).bind(event_name, function(e, data) {
             callback(data);
         });
     }
 };
 
 App.FullScreen = {
-    show: function (screenurl) {
+    show: function(screenurl) {
         $("#fullscreen_stage").load(screenurl);
         $('#fullscreenElement').addClass('open');
     },
-    hide: function () {
+    hide: function() {
         $('#fullscreenElement').removeClass('open');
     }
 };
 
-$('.close').on('click', function (event) {
+$('.close').on('click', function(event) {
     $('#fullscreenElement').removeClass('open');
 });
 
 
 var isMobile = {
-    Android: function () {
+    Android: function() {
         return navigator.userAgent.match(/Android/i);
     },
-    iOS: function () {
+    iOS: function() {
         return navigator.userAgent.match(/iPhone|iPad|iPod/i);
     }
 };
@@ -41,7 +41,7 @@ function getUrlParams(prop) {
     var params = {};
     var search = decodeURIComponent(window.location.href.slice(window.location.href.indexOf('?') + 1));
     var definitions = search.split('&');
-    definitions.forEach(function (val, key) {
+    definitions.forEach(function(val, key) {
         var parts = val.split('=', 2);
         params[parts[0]] = parts[1];
     });
@@ -69,26 +69,26 @@ function firstReadAndSetParameters() {
     }
 }
 
-App.Events.listen("show-edit-card", function (data) {
+App.Events.listen("show-edit-card", function(data) {
     //App.FullScreen.show("http://cend.in/event_template/edit_card.html");
-    App.FullScreen.show("../event_template/edit_card.html");
+    App.FullScreen.show("../../event_template/edit_card.html");
 });
-App.Events.listen("share-card", function (data) {
+App.Events.listen("share-card", function(data) {
     //App.FullScreen.show("http://cend.in/event_template/share_card.html");
-    App.FullScreen.show("../event_template/share_card.html");
+    App.FullScreen.show("../../event_template/share_card.html");
 });
 
-App.Events.listen("card-edited", function (payload) {
+App.Events.listen("card-edited", function(payload) {
     $("#to").html(payload.to);
     $("#message").html(payload.message);
     $("#from").html(payload.from);
 });
 
-App.Events.listen("show-action-bar", function (payload) {
+App.Events.listen("show-action-bar", function(payload) {
     $("#action-bar").show("fast");
 });
 
-App.Events.listen("hide-action-bar", function (payload) {
+App.Events.listen("hide-action-bar", function(payload) {
     $("#action-bar").hide();
 });
 
