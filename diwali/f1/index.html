@@ -8,6 +8,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#000000">
+
     <link rel="shortcut icon" type="image/png" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
     <link rel="icon" type="image/png" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
     <link rel="apple-touch-icon-precomposed" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
@@ -16,6 +17,9 @@
     <!-- <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet">
+    <link href='../../css/default.css' rel='stylesheet' type='text/css'>
     <style>
         @import url("https://fonts.googleapis.com/css?family=Bad+Script");
         #card-stage {
@@ -102,6 +106,10 @@
             100% {
                 color: orange;
             }
+        }
+        
+        #action-bar {
+            top: 0px;
         }
     </style>
 </head>
@@ -227,15 +235,49 @@
             <br />
             <h1 id="from-user">- Cend.in Team</h1>
         </div>
-        <div id="button-bar">
+        <!-- <div id="button-bar">
             <div class="sound-button action-button"></div>
             <div id="fs-button" class="fullscreen-button action-button" onclick="enableSound()">Enable Sound</div>
+        </div> -->
+    </div>
+
+    <div id="action-bar">
+        <!-- <button class="ui tiny button inverted outline" id="replay-button" onclick="javascript:App.Events.emit('replay-card')">Replay</button> -->
+        <button class="ui tiny button inverted" id="create-button" onclick="javascript:App.Events.emit('show-edit-card')">Create
+            your card</button>
+        <button class="ui tiny button inverted" id="share-button" onclick="javascript:App.Events.emit('share-card')">Share</button>
+        <button class="ui tiny button inverted" id="share-button" onclick="javascript:toggleSound()">Sound</button>
+    </div>
+    <div id="fullscreenElement">
+        <i class="io remove icon close big inverted"></i>
+        <div id="fullscreen_stage" class="flexy">
+            <div class="container"></div>
         </div>
     </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/fscreen%401.0.1.js'></script>
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/Stage%400.1.4.js'></script>
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/MyMath.js'></script>
     <script src="js/index.js"></script>
+    <script src="../../js/cend.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            firstReadAndSetParameters()
+            initCard();
+
+            // After animatin is done show the edit bar    
+            setTimeout(function() {
+                App.Events.emit('show-action-bar');
+            }, 1000);
+
+            App.Events.listen("replay-card", function(payload) {
+                window.location.reload;
+            });
+
+        });
+    </script>
 </body>
 
 </html>

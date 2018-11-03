@@ -29,10 +29,10 @@
         $('.show-label').remove();
     }
 
-    $(function () {
+    $(function() {
         $(".full-param").hide();
-
-        $("#preview-button").off('click').on('click', function () {
+        togglePause();
+        $("#preview-button").off('click').on('click', function() {
             var to = $("#cend-to").val();
             var message = $("#cend-message").val();
             var from = $("#cend-from").val();
