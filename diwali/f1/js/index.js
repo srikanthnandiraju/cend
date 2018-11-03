@@ -2366,10 +2366,6 @@ function handleDomContentLoaded(event) {
         document.querySelector('#from-user').innerHTML = "- " + from;
         document.title = from + ', sent a cart for you';
     }
-
-
-
-
 }
 
 function getUrlParams(prop) {
