@@ -5,30 +5,30 @@
     <div class="ui basic segment center aligned  animated fadeInUp">
         <a href="#" id="whatsapp_button">
             <img src="https://cdn0.iconfinder.com/data/icons/social-flat-rounded-rects/512/whatsapp-64.png" alt="" />
-            <br>Whatsapp
+            <br>Click to Share
         </a>
     </div>
 </div>
 <script>
     $(function() {
         //var whatText = "https://wa.me/?text=" + encodeURI(shareMessage);
-        $("#whatsapp_button").click(function() {
-            var shareMessage = window.location.href;
-            //alert(shareMessage);
-            $.getJSON(
-                "http://api.bit.ly/v3/shorten?", {
-                    format: "json",
-                    apiKey: "R_115f4ed0a6504068acfbf913946474c4",
-                    login: "o_50luer8re",
-                    longUrl: shareMessage
-                },
-                function(response) {
-                    var short_text = response.data.url;
-                    var whatText = "whatsapp://send?text=Your got a card! " + short_text;
-                    $("#whatsapp_button").attr('href', whatText);
-                    alert(whatText);
-                }
-            );
-        });
+        //$("#whatsapp_button").click(function() {
+        var shareMessage = window.location.href;
+        //alert(shareMessage);
+        $.getJSON(
+            "http://api.bit.ly/v3/shorten?", {
+                format: "json",
+                apiKey: "R_115f4ed0a6504068acfbf913946474c4",
+                login: "o_50luer8re",
+                longUrl: shareMessage
+            },
+            function(response) {
+                var short_text = response.data.url;
+                var whatText = "whatsapp://send?text=Your got a card! " + short_text;
+                $("#whatsapp_button").attr('href', whatText);
+                //alert(whatText);
+            }
+        );
+        //});
     });
 </script>
