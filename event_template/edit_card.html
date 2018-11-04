@@ -37,7 +37,7 @@
             var message = $("#cend-message").val();
             var from = $("#cend-from").val();
             var card_payload = {
-                // to: to,
+                to: to,
                 message: message,
                 from: from
             };
@@ -46,7 +46,6 @@
             var base_string = window.location.href;
             base_string = base_string.substring(0, base_string.indexOf("?") + 1);
             window.location.href = base_string + $.param(card_payload);
-
         });
     });
 </script>

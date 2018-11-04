@@ -11,15 +11,24 @@
 </div>
 <script>
     $(function() {
-        var shareMessage = "You got a card!. " + window.location.href;
-        //var whatText = "whatsapp://send?text=" + encodeURI(shareMessage);
-        var whatText = "https://wa.me/?text=" + encodeURI(shareMessage);
-
-        $("#whatsapp_button").attr('href', whatText);
-
+        //var whatText = "https://wa.me/?text=" + encodeURI(shareMessage);
         $("#whatsapp_button").click(function() {
-            alert(whatText);
+            var shareMessage = window.location.href;
+            //alert(shareMessage);
+            $.getJSON(
+                "http://api.bit.ly/v3/shorten?", {
+                    format: "json",
+                    apiKey: "R_115f4ed0a6504068acfbf913946474c4",
+                    login: "o_50luer8re",
+                    longUrl: shareMessage
+                },
+                function(response) {
+                    var short_text = response.data.url;
+                    var whatText = "whatsapp://send?text=Your got a card! " + short_text;
+                    $("#whatsapp_button").attr('href', whatText);
+                    alert(whatText);
+                }
+            );
         });
-
     });
 </script>

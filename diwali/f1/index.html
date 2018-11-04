@@ -252,9 +252,10 @@
             initCard();
 
             // After animatin is done show the edit bar    
-            setTimeout(function() {
-                App.Events.emit('show-action-bar');
-            }, 3000);
+            App.Events.emit('show-action-bar');
+            // setTimeout(function() {
+            //     App.Events.emit('show-action-bar');
+            // }, 3000);
 
 
             $("#play-button").hide();
