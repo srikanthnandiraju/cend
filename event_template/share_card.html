@@ -43,7 +43,8 @@
                 var whatText = "whatsapp://send?text=Your got a card! " + short_text;
                 $("#whatsapp_button").attr('href', whatText);
 
-                var smsText = "sms://Your got a card! " + short_text;
+                //var smsText = "sms://Your got a card! " + short_text;
+                var smsText = "sms:?&body=" + short_text;
                 $("#sms_button").attr('href', smsText);
 
                 var telegramText = "tg://msg?text=You got a card  " + short_text;
