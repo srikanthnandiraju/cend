@@ -226,7 +226,7 @@
         <!-- <button class="ui tiny button inverted outline" id="replay-button" onclick="javascript:App.Events.emit('replay-card')">Replay</button> -->
         <button class="ui tiny button inverted" id="create-button">Make a card</button>
         <button class="ui tiny button inverted" id="share-button">Share</button>
-        <button class="ui tiny button inverted" id="play-button" onclick="togglePause();">play</button>
+        <button class="ui tiny button inverted" id="play-button">play</button>
         <button class="ui tiny button inverted" id="share-button" onclick="javascript:toggleSound();toggleFullscreen();">Sound</button>
     </div>
     <div id="fullscreenElement">
@@ -249,24 +249,37 @@
     <script>
         $(document).ready(function() {
             firstReadAndSetParameters()
-            initCard();
+            $("#action-bar").hide();
+            $("#play-button").hide();
 
             // After animatin is done show the edit bar    
-            App.Events.emit('show-action-bar');
-            // setTimeout(function() {
-            //     App.Events.emit('show-action-bar');
-            // }, 3000);
+            //App.Events.emit('show-action-bar');
+            setTimeout(function() {
+                App.Events.emit('show-action-bar');
+            }, 3000);
 
 
-            $("#play-button").hide();
-            $("#create-button").click(function() {
+            $("#play-button").click(function() {
+                var ani_paused = store.state.paused;
                 togglePause();
+                if (ani_paused) {
+                    $("#play-button").html("Pause");
+                } else {
+                    $("#play-button").html("Play");
+                }
+            });
+
+
+            $("#create-button").click(function() {
+                // $("#share-button").show();
+                // $("#play-button").show();
                 App.Events.emit('show-edit-card');
+                togglePause();
             });
 
             $("#share-button").click(function() {
-                togglePause();
                 App.Events.emit('share-card');
+                togglePause();
             });
 
             $("#close-fullscreen-button").click(function() {

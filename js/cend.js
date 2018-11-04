@@ -93,9 +93,5 @@ App.Events.listen("hide-action-bar", function(payload) {
 });
 
 function initCard() {
-    $("#action-bar").hide();
-    // $("#share-button").hide();
-    // $("#create-button").click(function (e) {
-    //     $("#share-button").show();
-    // });
+
 }
