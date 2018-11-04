@@ -66,6 +66,8 @@ function firstReadAndSetParameters() {
     }
     if (message != undefined) {
         $('#message').html(message);
+    } else {
+        $('#message').remove();
     }
 }
 

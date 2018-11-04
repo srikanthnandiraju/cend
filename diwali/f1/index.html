@@ -20,13 +20,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet">
     <link href='../../css/default.css' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Sonsie+One" rel="stylesheet">
+
     <style>
         body {
             background: black;
             color: white;
         }
         
-        @import url("https://fonts.googleapis.com/css?family=Bad+Script");
         #card-stage {
             position: absolute;
             top: 0px;
@@ -39,8 +40,18 @@
             align-items: center;
         }
         
+        #to {
+            font-family: 'Sonsie One', cursive;
+            transform: rotate(-15deg);
+            color: yellow;
+            text-align: left;
+            line-height: 3;
+            letter-spacing: 0.06em;
+            font-size: 1.2em;
+        }
+        
         #message {
-            font-family: "Bad Script", cursive;
+            font-family: 'Sonsie One', cursive;
             transform: rotate(-15deg);
             color: white;
             font-size: 1.2em;
@@ -51,8 +62,8 @@
             font-weight: bold;
         }
         
-        #from-user {
-            font-family: "Bad Script", cursive;
+        #from {
+            font-family: 'Sonsie One', cursive;
             transform: rotate(-15deg);
             color: yellow;
             text-align: right;
@@ -212,9 +223,10 @@
 
     <div id="card-stage">
         <div class="animated zoomIn slower">
+            <h1 id="to">Receiver</h1>
             <h1 id="message">Happiness is in the air<br> Its Diwali everywhere<br> Lets show some love and care<br> And wish everyone out there <br>Happy Diwali</h1>
-            <br />
-            <h1 id="from-user">- Cend.in Team</h1>
+            <!-- <br /> -->
+            <h1 id="from">- Cend.in Team</h1>
         </div>
         <!-- <div id="button-bar">
             <div class="sound-button action-button"></div>
@@ -269,10 +281,7 @@
                 }
             });
 
-
             $("#create-button").click(function() {
-                // $("#share-button").show();
-                // $("#play-button").show();
                 App.Events.emit('show-edit-card');
                 togglePause();
             });
