@@ -12,8 +12,9 @@
 <script>
     $(function() {
         var shareMessage = "You got a card!. " + window.location.href;
+        //var whatText = "whatsapp://send?text=" + encodeURI(shareMessage);
+        var whatText = "https://wa.me/?text=" + encodeURI(shareMessage);
 
-        var whatText = "whatsapp://send?text=" + encodeURI(shareMessage);
         $("#whatsapp_button").attr('href', whatText);
 
         $("#whatsapp_button").click(function() {
