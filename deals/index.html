@@ -21,14 +21,14 @@
 
 <body>
   <div id="screen-wrapper">
-    <div id="search-wrapper">
+    <!-- <div id="search-wrapper">
       <div class="ui action input fluid" style="border-radius: 0px !important;">
         <input type="text" placeholder="Search..." id="search-filter" style="border-radius: 0px !important;" />
         <button class="ui icon button teal" id="search-button">
           <i class="search icon"></i>
         </button>
       </div>
-    </div>
+    </div> -->
 
     <div id="menu-wrapper">
       <header class="scroll">
@@ -37,7 +37,7 @@
     </div>
 
     <div id="items-list">
-      <article id="items-holder" style="padding:0px 5px;"></article>
+      <article id="items-holder"></article>
     </div>
   </div>
 
@@ -101,7 +101,8 @@
       let html = Mustache.to_html(template, {
         items: items
       });
-      $("#items-holder").html(html);
+      $("#items-holder").empty();
+      $("#items-holder").append(html);
       registerEvents();
     }
 
