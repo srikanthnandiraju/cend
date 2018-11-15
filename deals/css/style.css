@@ -12,7 +12,7 @@ body {
 }
 
 article {
-  -webkit-column-width: 8em;
+  -webkit-column-width: 10em;
   -webkit-column-gap: 0.5em;
 }
 
