@@ -109,7 +109,9 @@
       $(".round-card").on("click", function () {
         var link = $(this).attr("data-link-url");
         console.log(link);
-
+        var open = window.open(link);
+        if (open == null || typeof (open) == 'undefined')
+          alert("Turn off your pop-up blocker!");
         // if (isSelected == "0") {
         //   $(this).attr("data-rating", "1");
         //   UserActivity.savedBooth(favBoothId, 1);
@@ -166,7 +168,7 @@
       }
 
       createMenu();
-      renderFilteredItems(App.deals.slice(0, 10));
+      renderFilteredItems(App.deals.slice(0, 20));
 
       // Handle zone filter
       $(".nav-item")
