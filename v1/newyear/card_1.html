@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+
     <title>[ CEND.IN ]</title>
     <style type="text/css" media="screen">
         * {
@@ -16,11 +17,12 @@
         html,
         body {
             height: 100%;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Courgette', cursive;
             background: #000;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(10, 10, 0, 0.7)), url(/img/blur_colors.jpg) no-repeat center center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(10, 10, 0, 0.7)), url(https://stmed.net/sites/default/files/turquoise-black-wallpapers-25327-1341092.jpg) no-repeat center center;
+            /* background-image: linear-gradient(#000, #111); */
             background-size: cover;
             -webkit-background-size: cover;
             -moz-background-size: cover;
@@ -93,9 +95,9 @@
     <div id="message_table">
 
         <div id="message">
-            <h2 style="color:gray" id="happy">HAPPY NEW YEAR</h2>
-            <h1 style="color:#00BCD4;font-size:4em;letter-spacing: 2px;" id="year">2019</h1>
-            <p id="greeting">
+            <h2 style="color:yellow" id="happy">HAPPY NEW YEAR</h2>
+            <h1 style="color:orange;font-size:4em;letter-spacing: 2px;" id="year">2019</h1>
+            <p id="greeting" style="color:yellow;">
                 {{message}}
             </p>
 
@@ -108,38 +110,84 @@
     </div>
 
     <canvas id="canvas">
-		Canvas is not supported by your browser.
-	</canvas>
+        Canvas is not supported by your browser.
+    </canvas>
 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script>
 
     <script src="../cards_js/fire.js"></script>
+
     <script type="text/javascript" charset="utf-8">
-        var tl = new TimelineMax({
-            repeat: 2,
+        function getUrlParams(prop) {
+            var params = {};
+            var search = decodeURIComponent(window.location.href.slice(window.location.href.indexOf('?') + 1));
+            var definitions = search.split('&');
+            definitions.forEach(function(val, key) {
+                var parts = val.split('=', 2);
+                params[parts[0]] = parts[1];
+            });
+            return (prop && prop in params) ? params[prop] : params;
+        }
+
+        function firstReadAndSetParameters() {
+            var params = getUrlParams();
+            var from = params.from;
+            var to = params.to;
+            var message = params.message;
+            if (from != undefined) {
+                $('#from').html(from);
+                document.title = from + ' sent a card for you';
+            } else {
+                // $("#from").remove();
+                $('#from').html(" ");
+            }
+            if (to != undefined) {
+                $('#to').html(to);
+            } else {
+                // $("#to").remove();
+                $('#to').html(" ");
+            }
+            if (message != undefined) {
+                $('#greeting').html(message);
+            } else {
+                // $('#message').remove();
+                $('#greeting').html(" ");
+            }
+        }
+
+
+        $(document).ready(function() {
+            firstReadAndSetParameters();
+
+            var tl = new TimelineMax({
+                repeat: 2,
+            });
+            var toEl = document.getElementById('to');
+            var fromEl = document.getElementById('from');
+            var greetEl = document.getElementById('greeting');
+            var yearEl = document.getElementById('year');
+            var happyEl = document.getElementById('happy');
+
+            tl.staggerFrom([toEl, happyEl, yearEl, greetEl], 2, {
+                opacity: 0,
+                scale: 3,
+                y: 100,
+                ease: Back.easeOut,
+            }, 1, "+=1");
+
+            tl.from(fromEl, 0.8, {
+                opacity: 0,
+                y: -200,
+                ease: Back.easeOut,
+            });
+
+            tl.to(fromEl, 0.8, {
+                scale: 1,
+            }, 10);
+
+
         });
-        var toEl = document.getElementById('to');
-        var fromEl = document.getElementById('from');
-        var greetEl = document.getElementById('greeting');
-        var yearEl = document.getElementById('year');
-        var happyEl = document.getElementById('happy');
-
-        tl.staggerFrom([toEl, happyEl, yearEl, greetEl], 2, {
-            opacity: 0,
-            scale: 3,
-            y: 100,
-            ease: Back.easeOut,
-        }, 1, "+=1");
-
-        tl.from(fromEl, 0.8, {
-            opacity: 0,
-            y: -200,
-            ease: Back.easeOut,
-        });
-
-        tl.to(fromEl, 0.8, {
-            scale: 1,
-        }, 10);
     </script>
 </body>
 
