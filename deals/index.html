@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#000000">
+
+  <link rel="shortcut icon" type="image/png" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+  <link rel="icon" type="image/png" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+  <link rel="apple-touch-icon-precomposed" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="msapplication-TileImage" content="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+  <title>[ CEND DEALS ]</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div id="screen-wrapper">
+    <!-- <div id="search-wrapper">
+      <div class="ui action input fluid" style="border-radius: 0px !important;">
+        <input type="text" placeholder="Search..." id="search-filter" style="border-radius: 0px !important;" />
+        <button class="ui icon button teal" id="search-button">
+          <i class="search icon"></i>
+        </button>
+      </div>
+    </div> -->
+
+    <div id="menu-wrapper">
+      <header class="scroll">
+        <nav class="flex" id="h-menu"><span class="nav-item">MENU</span></nav>
+      </header>
+    </div>
+
+    <div id="items-list">
+      <article id="items-holder"></article>
+    </div>
+  </div>
+
+  <template id="MENU_TEMPLATE" type="text/template">
+    <span class="nav-item" data-zone-search-item="all-zones">
+      <i class="ui heart outline icon"></i>&nbsp;SAVED ITEMS</span>
+    {{#items}}
+    <span class="nav-item" data-search-filter="{{category_filter}}">
+      <i class="circle dot outline icon"></i>&nbsp;{{ Category }}</span>
+    {{/items}}
+  </template>
+
+  <template id="items-template" type="text/template">
+    {{#items}}
+
+    {{#heading}} {{/heading}} {{^heading}}
+    <section>
+      <div class="ui fluid card round-card {{grad}} animated fadeInUp faster" data-link-url="{{link}}" style="cursor:pointer;">
+        <div class="content">
+          <div class="white-center">{{ Store }}</div>
+          <h4 class="center aligned">{{ Category }}</h4>
+          <div class="description center aligned">
+            <button id="scan-button" class="ui basic orange tiny button inverted" style="border-radius:20px !important;cursor:pointer;">
+              {{ Price }}
+            </button>
+          </div>
+        </div>
+        <div class="extra content">
+          <span class="right floated" style="color:white;">
+            <i class="share icon inverted"></i></span>
+          <span class="" style="color:white;">
+            <i class="heart outline icon"></i></span>
+        </div>
+      </div>
+    </section>
+    {{/heading}} {{/items}}
+  </template>
+  <!--
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.js'></script>
+    -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
+  <script src="js/deals.js"></script>
+  <script type="text/javascript">
+    function createMenu() {
+      $("#h-menu").empty("");
+      var template = $("#MENU_TEMPLATE").html();
+
+      var menu_items = _.filter(App.deals, function (o) {
+        return o.heading == true;
+      });
+      var html = Mustache.to_html(template, {
+        items: menu_items
+      });
+      $("#h-menu").append(html);
+    }
+
+    function renderFilteredItems(items) {
+      let template = $("#items-template").html();
+      let html = Mustache.to_html(template, {
+        items: items
+      });
+      $("#items-holder").empty();
+      $("#items-holder").append(html);
+      registerEvents();
+    }
+
+    function registerEvents() {
+      $(".round-card").on("click", function () {
+        var link = $(this).attr("data-link-url");
+        console.log(link);
+        var open = window.open(link);
+        if (open == null || typeof (open) == 'undefined')
+          alert("Turn off your pop-up blocker!");
+        // if (isSelected == "0") {
+        //   $(this).attr("data-rating", "1");
+        //   UserActivity.savedBooth(favBoothId, 1);
+        // } else {
+        //   $(this).attr("data-rating", "0");
+        //   UserActivity.savedBooth(favBoothId, 0);
+        // }
+      });
+
+      // $('.like-booth').on('click', function () {
+      //   var likeBoothId = parseInt($(this).attr("data-booth-id"));
+      //   var isSelected = $(this).attr("data-rating");
+      //   UserActivity.likedBooth(likeBoothId, 1);
+      // });
+    }
+
+    function renderBySearchFilter(searchFilter) {
+      var filtered_items = _.filter(App.deals, function (o) {
+        return o.category_filter == searchFilter;
+      });
+      renderFilteredItems(filtered_items);
+
+      // $(".rating").rating();
+      // registerEvents();
+      $("#items-list").animate({
+          scrollTop: 0
+        },
+        "slow"
+      );
+    }
+
+    $(document).ready(function () {
+      var grads = [
+        "red-grad",
+        "blue-grad",
+        "slate-grad",
+        "yellow-grad",
+        "pink-grad",
+        "green-grad",
+        "purp-grad"
+      ];
+
+      function getRandomClass() {
+        var rind = getRandomArbitrary(0, grads.length - 1);
+        return grads[rind];
+      }
+
+      function getRandomArbitrary(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      for (var i = 0; i < App.deals.length; i++) {
+        App.deals[i].grad = getRandomClass();
+      }
+
+      createMenu();
+      renderFilteredItems(App.deals.slice(0, 20));
+
+      // Handle zone filter
+      $(".nav-item")
+        .off("click")
+        .on("click", function () {
+          var search_filter = $(this).attr("data-search-filter");
+          if (search_filter.startsWith("SAVED")) {
+            //showSavedItems();
+            console.log("Show saved items");
+          } else {
+            renderBySearchFilter(search_filter);
+          }
+        });
+
+      $("#search-button").click(function () {
+        renderBoothsBySearchFilter($("#search-filter").val());
+      });
+    });
+  </script>
+</body>
+
+</html>
