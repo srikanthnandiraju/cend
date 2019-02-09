@@ -54,8 +54,8 @@
             font-size: 30px;
             text-align: center;
             font: bold 30px Verdana;
-            border: 1px solid white;
-            background: #00FF00;
+            /* border: 1px solid white; */
+            /* background: #00FF00; */
         }
         
         #message_table {
@@ -80,9 +80,9 @@
 <body>
     <div id="message_table">
         <div id="message_wrapper">
-            <h2 class="effect">{{to}}</h2>
-            <h4 id="greeting" class=" effect"> {{message}} </h4>
-            <h2 class="effect"> {{from}}</h2>
+            <h2 class="effect" id="to">{{to}}</h2>
+            <h4 id="message" class=" effect"> {{message}} </h4>
+            <h2 id="from" class="effect"> {{from}}</h2>
         </div>
     </div>
     <div id="particles-bg"></div>
@@ -90,7 +90,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.js"></script>
-
+    <script src='/js/url_util.js'></script>
     <script>
         function animate() {
             var tl = new TimelineMax({
@@ -107,15 +107,17 @@
                 }
             }, 2, "+=1");
 
-            tl.to("#greeting", 5, {
+            tl.to("#message", 5, {
                 color: "white",
-                //margin : "20px"
+                background: 'none'
+                    //margin : "20px"
             });
 
         }
 
 
         $(document).ready(function() {
+            firstReadAndSetParameters();
             particlesJS.load('particles-bg', '../cards_js/baloons.json', function() {});
             animate();
         });
