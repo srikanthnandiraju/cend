@@ -121,7 +121,7 @@
     <div id="message_table">
 
         <div id="message_center">
-            {{message}}
+            <span id="message">{{message}}</span>
             <img src="https://cdn2.iconfinder.com/data/icons/despicable-me-2-minions/128/Happy-Minion-Icon.png" class="center-block animated pulse infinite" />
             <br />
             <span class="label label-primary line-1">HAVE A</span>
@@ -153,9 +153,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/textillate/0.4.0/jquery.textillate.min.js" type="text/javascript" charset="utf-8"></script>
-
+    <script src='/js/url_util.js'></script>
     <script>
         $(document).ready(function() {
+            firstReadAndSetParameters();
             $(function() {
 
                 $('.tlt').textillate({
