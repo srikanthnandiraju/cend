@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SCREEN WRAPPER SHORT BITLY</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css'>
+    <style>
+        body {
+            background: #333;
+        }
+        
+        .screen-wrapper {
+            position: absolute;
+            margin: 0px;
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            overflow: hidden;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .flexy {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .rounded-panel {
+            border-radius: 10px !important;
+            box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.3) !important;
+            /* box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5) !important; */
+        }
+        
+        .ani-bg {
+            background: linear-gradient(100deg, #009cde, #003087, #640487, #00cf92);
+            background-size: 400% 400%;
+            animation: bg 30s infinite;
+        }
+        
+        @keyframes bg {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flexy screen-wrapper ani-bg">
+        <div class="ui segment padded rounded-panel center aligned inverted blue">
+            <h2 class="ui header animated fadeInDown inverted">
+                <div class="sub header" id="to">To User</div>
+            </h2>
+            <img class=" animated zoomIn slow" src="http://pngimg.com/uploads/valentines_day/valentines_day_PNG39585.png" width="200">
+            <h2 class="ui header animated fadeInDown inverted delay-1s">
+                Blessings can be long text here
+            </h2>
+            <h2 class="ui header animated fadeInDown delay-2s inverted">
+                <div class="sub header" id="from">From User</div>
+            </h2>
+        </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.js'></script>
+    <script src='/js/url_util.js'></script>
+    <script>
+        $(document).ready(function() {
+            firstReadAndSetParameters();
+        });
+    </script>
+</body>
+
+</html>
