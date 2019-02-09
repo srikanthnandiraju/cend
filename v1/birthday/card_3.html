@@ -145,29 +145,17 @@
 
         <div id="message_center">
             <p class="msgpara">
-                {{message}}
+                <span id="message">{{message}}</span>
             </p>
             <span class="label label-success line-1">HAVE A</span>
             <h4 class="tlt">
                 <ul class="texts">
-                    <li>
-                        WONDERFUL
-                    </li>
-                    <li id="ny">
-                        HAPPY
-                    </li>
-                    <li>
-                        HEALTHY
-                    </li>
-                    <li>
-                        CHEERFUL
-                    </li>
-                    <li>
-                        JOYFUL
-                    </li>
-                    <li>
-                        FANTASTIC
-                    </li>
+                    <li>WONDERFUL</li>
+                    <li>HAPPY</li>
+                    <li>HEALTHY</li>
+                    <li>CHEERFUL</li>
+                    <li>JOYFUL</li>
+                    <li>FANTASTIC</li>
                 </ul>
             </h4>
             <span class="label label-warning line-2">BIRTHDAY NOW & FOREVER</span>
@@ -183,9 +171,10 @@
     <script src="../cards_js/jquery.textillate.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.js"></script>
     <!-- script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js"></script-->
-
+    <script src='/js/url_util.js'></script>
     <script>
         $(document).ready(function() {
+            firstReadAndSetParameters();
             particlesJS.load('particles-bg', '../cards_js/colorbaloons.json', function() {});
             $(function() {
 
