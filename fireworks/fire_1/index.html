@@ -248,7 +248,7 @@
     </div>
 
     <div id="action-bar">
-        <button class="ui tiny button inverted" id="sound-button">Sound</button>
+        <button class="ui tiny button inverted" id="sound-button">Sound On</button>
     </div>
     <div id="fullscreenElement">
         <button class="ui circular google plus icon button" id="close-fullscreen-button">
@@ -271,9 +271,18 @@
         $(document).ready(function() {
             firstReadAndSetParameters()
             var sb = document.getElementById("sound-button");
+            var sound = false;
             sb.addEventListener('click', function() {
+                if (!sound) {
+                    $("#sound-button").html("Sound Off");
+                    sound = true;
+                } else {
+                    $("#sound-button").html("Sound On");
+                    sound = false;
+                }
+
                 store.setState({
-                    soundEnabled: true
+                    soundEnabled: sound
                 });
             });
 
