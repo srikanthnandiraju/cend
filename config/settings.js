@@ -2,7 +2,8 @@ Cards.types = [{
         id: 1,
         category: "birthday",
         name: "Birthday 1",
-        url: "http://cend.in/v1/birthday/card_1.html"
+        url: "http://cend.in/v1/birthday/card_1.html",
+        image: "http://cend.in/img/birthday_1.png"
     },
     {
         id: 2,
