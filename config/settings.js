@@ -1,7 +1,7 @@
 Cards.types = [{
         id: 1,
         category: "birthday",
-        name: "Kitten & Cake card",
+        name: "Fox & Cake card",
         description: "A colorful card with cartoon animation",
         url: "http://cend.in/v1/birthday/card_1.html",
         image: "http://cend.in/img/birthday_1.png"
@@ -17,7 +17,7 @@ Cards.types = [{
     {
         id: 3,
         category: "birthday",
-        name: "All baloons",
+        name: "All balloons",
         description: "A animated baloons with name inside baloons",
         url: "http://cend.in/v1/birthday/card_3.html",
         image: "http://cend.in/img/birthday_3.png"
@@ -25,7 +25,7 @@ Cards.types = [{
     {
         id: 4,
         category: "birthday",
-        name: "Stars and baloons",
+        name: "Stars and balloons",
         description: "Blaoons and stars in the sky with animated text",
         url: "http://cend.in/v1/birthday/card_4.html",
         image: "http://cend.in/img/birthday_4.png"
