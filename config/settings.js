@@ -43,7 +43,7 @@ Cards.types = [{
         category: "fireworks",
         name: "Exploding Fireworks",
         description: "Spectacular fireworks with sound",
-        url: "http://cend.in/diwali/f1/",
+        url: "http://cend.in/fireworks/fire_1/index.html",
         image: "http://cend.in/img/fireworks_1.png"
     },
     {
