@@ -18,7 +18,7 @@ Cards.types = [{
         id: 3,
         category: "birthday",
         name: "All balloons",
-        description: "A animated baloons with name inside baloons",
+        description: "Animated baloons with letters inside",
         url: "http://cend.in/v1/birthday/card_3.html",
         image: "http://cend.in/img/birthday_3.png"
     },
@@ -26,7 +26,7 @@ Cards.types = [{
         id: 4,
         category: "birthday",
         name: "Stars and balloons",
-        description: "Blaoons and stars in the sky with animated text",
+        description: "Animated Stars and Balloons with animated text",
         url: "http://cend.in/v1/birthday/card_4.html",
         image: "http://cend.in/img/birthday_4.png"
     },
@@ -42,7 +42,7 @@ Cards.types = [{
         id: 6,
         category: "fireworks",
         name: "Exploding Fireworks",
-        description: "spectacular fireworks with sound",
+        description: "Spectacular fireworks with sound",
         url: "http://cend.in/diwali/f1/",
         image: "http://cend.in/img/fireworks_1.png"
     },
