@@ -110,13 +110,13 @@
     <script>
         window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-70148117-1');
-</script>
+        gtag('config', 'UA-70148117-1');
+    </script>
 </head>
 
 <body>
@@ -147,8 +147,8 @@
     <!-- App -->
     <div class="container">
         <div class="loading-init">
-            <div class="loading-init__header">HAPPY DIWALI</div>
-            <div class="loading-init__status">Phatake</div>
+            <div class="loading-init__header">CEND.IN</div>
+            <div class="loading-init__status">card</div>
         </div>
         <div class="stage-container remove">
             <div class="canvas-container">
@@ -237,8 +237,7 @@
     <div id="card-stage">
         <div class="animated zoomIn slower">
             <h1 id="to">Receiver</h1>
-            <h1 id="message">Happiness is in the air<br> Its Diwali everywhere<br> Lets show some love and care<br> And
-                wish everyone out there <br>Happy Diwali</h1>
+            <h1 id="message">Happiness is in the air<br> Its Diwali everywhere<br> Lets show some love and care<br> And wish everyone out there <br>Happy Diwali</h1>
             <!-- <br /> -->
             <h1 id="from">- Cend.in Team</h1>
         </div>
@@ -273,19 +272,19 @@
     <script src="js/index.js"></script>
     <script src="../../js/cend.js" type="text/javascript"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             firstReadAndSetParameters()
             $("#action-bar").hide();
             $("#play-button").hide();
 
             // After animatin is done show the edit bar    
             //App.Events.emit('show-action-bar');
-            setTimeout(function () {
+            setTimeout(function() {
                 App.Events.emit('show-action-bar');
             }, 3000);
 
 
-            $("#play-button").click(function () {
+            $("#play-button").click(function() {
                 var ani_paused = store.state.paused;
                 togglePause();
                 if (ani_paused) {
@@ -295,17 +294,17 @@
                 }
             });
 
-            $("#create-button").click(function () {
+            $("#create-button").click(function() {
                 App.Events.emit('show-edit-card');
                 togglePause();
             });
 
-            $("#share-button").click(function () {
+            $("#share-button").click(function() {
                 App.Events.emit('share-card');
                 togglePause();
             });
 
-            $("#close-fullscreen-button").click(function () {
+            $("#close-fullscreen-button").click(function() {
                 $('#fullscreenElement').removeClass('open');
                 $("#play-button").show();
                 togglePause();
